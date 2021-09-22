@@ -41,7 +41,6 @@ describe 'the plot index page' do
     end
 
     it 'has a link to remove plant next to each plant name' do
-      save_and_open_page
       within "#plot-#{@plot_25.number}" do
         expect(page).to have_content(@banana_pepper.name)
       end
@@ -49,7 +48,7 @@ describe 'the plot index page' do
       within "#plant-#{@banana_pepper.id}" do
         click_link("Remove plant")
       end
-      save_and_open_page
+
       expect(current_path).to eq('/plots')
 
       within "#plot-#{@plot_25.number}" do
@@ -60,13 +59,3 @@ describe 'the plot index page' do
     end
   end
 end
-
-# User Story 2, Remove a Plant from a Plot
-# As a visitor
-# When I visit a plot's index page
-# Next to each plant's name
-# I see a link to remove that plant from that plot
-# When I click on that link
-# I'm returned to the plots index page
-# And I no longer see that plant listed under that plot
-# (Note: you should not destroy the plant record entirely)
